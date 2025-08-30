@@ -3,11 +3,11 @@ This project is part of my CODTECH Virtual Internship under Data Science.
 The goal is to develop an end-to-end data science project, from data collection and preprocessing to model deployment using Flask.
 
 # Goa Power Outage Predictor ⚡
-This project implements a machine learning model to predict the category of power outages (short or long duration) in different parts of Goa, India. The project includes data cleaning, model training, and deployment as a web application.
+This project implements a supervised machine learning model (Random Forest Classifier) to predict the category of power outages (short or long duration) in different parts of Goa, India. The project includes data cleaning, model training, and deployment as a web application.
 
 # 🚀 Project Workflow
 1. Data Collection and Preprocessing
-Dataset: Power outage reports for May and June 2025, provided in two Excel files (Goa Power Outage Report May 2025.xlsx and Goa Power Outage Report June 2025.xlsx).
+Dataset: Power outage reports for May and June 2025, provided in two Excel files (Goa Power Outage Report May 2025.xlsx and Goa Power Outage Report June 2025.xlsx). This is public data available at https://www.goaelectricity.gov.in/Home_page.aspx
 
 Preprocessing: The datasets were combined, and categorical features such as 'Town Name', 'Substation', 'Feeder Name', and 'Rural/Urban' were cleaned and encoded using LabelEncoder to prepare them for the model.
 
@@ -58,3 +58,4 @@ Source code for the Flask API and the front-end interface.
 This concludes Task 3: End-to-End Data Science Project for the CodTech Internship 🚀
 
 👨‍💻 Developed by: Shaunak Damodar Sinai Kunde
+
