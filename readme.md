@@ -46,7 +46,8 @@ Task-3 End-to-End Data Science Project/
 │── app.py                                     # Flask backend
 │── index.html                                 # Front-end web page
 │── readme.md                                  # Project documentation
-│── reqirements.txt                            # necessary libraries
+│── requirements.txt                           # necessary libraries
+
 
 ✅ Deliverables
 A deployed web application that provides real-time predictions for power outages.
@@ -58,4 +59,5 @@ Source code for the Flask API and the front-end interface.
 This concludes Task 3: End-to-End Data Science Project for the CodTech Internship 🚀
 
 👨‍💻 Developed by: Shaunak Damodar Sinai Kunde
+
 
