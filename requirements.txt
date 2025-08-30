@@ -1,0 +1,5 @@
+## 📘 `requirements.txt`
+Flask
+pandas
+scikit-learn
+joblib
