@@ -1,105 +1,60 @@
-# CODTECH Internship – Task 2: Deep Learning Project
-
+# CODTECH Internship – Task 3: End-to-End Data Science Project
 This project is part of my CODTECH Virtual Internship under Data Science.
-The goal is to build a deep learning model for image classification using the Plant Disease dataset from Kaggle.
+The goal is to develop an end-to-end data science project, from data collection and preprocessing to model deployment using Flask.
 
-# Plant Disease Classification 🌱
-
-This project implements a Deep Learning model to classify plant diseases using the PlantVillage Dataset
-.
-The model is built with TensorFlow/Keras and demonstrates transfer learning (MobileNetV2) for efficient training.
+# Goa Power Outage Predictor ⚡
+This project implements a machine learning model to predict the category of power outages (short or long duration) in different parts of Goa, India. The project includes data cleaning, model training, and deployment as a web application.
 
 # 🚀 Project Workflow
-1. Dataset Access via Kaggle API
+1. Data Collection and Preprocessing
+Dataset: Power outage reports for May and June 2025, provided in two Excel files (Goa Power Outage Report May 2025.xlsx and Goa Power Outage Report June 2025.xlsx).
 
-# Dataset: Plant Disease Dataset
-(Kaggle: https://www.kaggle.com/datasets/emmarex/plantdisease)
+Preprocessing: The datasets were combined, and categorical features such as 'Town Name', 'Substation', 'Feeder Name', and 'Rural/Urban' were cleaned and encoded using LabelEncoder to prepare them for the model.
 
-Downloaded programmatically using Kaggle API (emmarex/plantdisease), not uploaded to GitHub due to size (~342 MB).
+2. Model Development
+A machine learning classifier was trained on the preprocessed data to predict the likelihood of a power outage being either a 'Short Outage (<= 1 hour)' or a 'Long Outage (> 1 hour)'.
 
-2. Data Preprocessing
+The trained model was saved as a serialized file, power_outage_classifier.pkl, for easy deployment.
 
-Image resizing (128x128) & normalization.
+3. API & Web Application Deployment
+Flask API: A Flask backend was created with two main API endpoints:
 
-Train-validation split using validation_split in ImageDataGenerator (no separate test folder required).
+/get_options: Fetches unique values for substations and feeder names to populate the dropdown menus on the web page.
 
-Data augmentation: rotation, zoom, flips, brightness adjustments to improve generalization.
+/predict: Accepts user input and uses the loaded machine learning model to return a prediction.
 
-3. Model Development
-
-Transfer learning using MobileNetV2 (pre-trained on ImageNet).
-
-Added custom dense layers for classification of plant disease categories.
-
-Optimized with Adam, categorical crossentropy loss.
-
-4. Training & Evaluation
-
-Trained on GPU for efficiency.
-
-Metrics: Accuracy & Loss.
-
-Evaluated on validation set using val_generator.
-
-Predicted sample images from validation set.
-
-5. Visualization
-
-Training vs Validation Accuracy & Loss curves.
-
-Sample predictions with actual vs predicted labels.
-
-📊 Model Visualizations
-
-Accuracy & Loss graphs during training.
-
-Example validation images with predicted labels.
+Web App: An index.html file serves as the front-end user interface. It allows users to select town, substation, feeder, and area type. It then sends this data to the Flask API to get and display a real-time prediction.
 
 🛠️ Tools & Libraries
-
 Python 3.10+
 
-TensorFlow / Keras – Deep Learning framework
+Flask – The web framework used for API development.
 
-NumPy – Numerical operations
+pandas – For data manipulation and preprocessing.
 
-Matplotlib / Seaborn – Visualization
+scikit-learn – For LabelEncoder and the machine learning model.
 
-Kaggle API – Dataset download
+joblib – To save and load the trained model.
+
+HTML, CSS, JavaScript – For the front-end web interface.
 
 📂 Project Structure
-Task-2 Deep Learning Project/
-│── plant_disease_dataset/           # Downloaded via Kaggle API
-│── deep_learning_plant.ipynb  # Main Notebook
-│── requirements.txt                 # Required Python libraries
-│── readme.md                        # Project documentation
-
-📊 Summary & Insights
-
-The Plant Disease dataset contains multiple classes of diseased & healthy plant leaves.
-
-Data Augmentation helped reduce overfitting and improved model generalization.
-
-Transfer learning with MobileNetV2 achieved high validation accuracy, demonstrating effective learning of disease patterns.
-
-Sample predictions show the model correctly classifies most plant categories.
+Task-3 End-to-End Data Science Project/
+│── Goa Power Outage Report May 2025.xlsx    # Raw data
+│── Goa Power Outage Report June 2025.xlsx   # Raw data
+│── power_outage_classifier.pkl                # Trained model
+│── app.py                                     # Flask backend
+│── index.html                                 # Front-end web page
+│── readme.md                                  # Project documentation
+│── reqirements.txt                            # necessary libraries
 
 ✅ Deliverables
+A deployed web application that provides real-time predictions for power outages.
 
-Trained CNN model → plant_disease_cnn.h5
+Trained machine learning model saved as power_outage_classifier.pkl.
 
-Accuracy & Loss plots
+Source code for the Flask API and the front-end interface.
 
-Sample predictions with visualization
-
-⚠️ Note
-
-The dataset (~342 MB) is not uploaded to GitHub due to size limits.
-
-Use Kaggle API to download the dataset before running the notebook.
-
-validation_split is used instead of separate test folder for evaluation.
-
-This concludes Task-2: Deep Learning Project for the CodTech Internship 🚀
+This concludes Task 3: End-to-End Data Science Project for the CodTech Internship 🚀
 
 👨‍💻 Developed by: Shaunak Damodar Sinai Kunde
