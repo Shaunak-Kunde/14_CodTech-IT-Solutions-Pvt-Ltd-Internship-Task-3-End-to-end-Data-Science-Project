@@ -1,63 +1,142 @@
-# CODTECH Internship – Task 3: End-to-End Data Science Project
-This project is part of my CODTECH Virtual Internship under Data Science.
-The goal is to develop an end-to-end data science project, from data collection and preprocessing to model deployment using Flask.
+# CODTECH Internship – Task 3: Goa Power Outage Prediction ⚡
 
-# Goa Power Outage Predictor ⚡
-This project implements a supervised machine learning model (Random Forest Classifier) to predict the category of power outages (short or long duration) in different parts of Goa, India. The project includes data cleaning, model training, and deployment as a web application.
+This project is part of my CODTECH Virtual Internship under Data Science. The goal is to build a full Data Science pipeline, from data collection and preprocessing to model training and deployment using FastAPI, to predict power outages in Goa. I have also included a short demo video showing the API in action.
+
+# Goa Power Outage Prediction
+
+This project implements a Random Forest model to classify power outages into:
+
+Short Outage (≤ 1 hour)
+
+Long Outage (> 1 hour)
+
+based on historical data from the Goa Power Outage Report May 2025.xlsx. The trained model is deployed as a FastAPI API, allowing users to get real-time predictions by sending JSON data. This is my FastAPI deployment for ML, after experimenting with Streamlit, Flask, joblib, and pickle.
 
 # 🚀 Project Workflow
-1. Data Collection and Preprocessing
-Dataset: Power outage reports for May and June 2025, provided in two Excel files (Goa Power Outage Report May 2025.xlsx and Goa Power Outage Report June 2025.xlsx). This is public data available at https://www.goaelectricity.gov.in/Home_page.aspx
+Dataset Access
 
-Preprocessing: The datasets were combined, and categorical features such as 'Town Name', 'Substation', 'Feeder Name', and 'Rural/Urban' were cleaned and encoded using LabelEncoder to prepare them for the model.
+Dataset: Goa Power Outage Report May 2025 (available on Goa Electricity Dept Website)
 
-2. Model Development
-A machine learning classifier was trained on the preprocessed data to predict the likelihood of a power outage being either a 'Short Outage (<= 1 hour)' or a 'Long Outage (> 1 hour)'.
+Columns: Town Name, Substation, Feeder Name, Rural/Urban, No of Consumers, No of Outages, Duration of Outage, Average Hours of Steady Supply
 
-The trained model was saved as a serialized file, power_outage_classifier.pkl, for easy deployment.
+Only May 2025 data is used for this project.
 
-3. API & Web Application Deployment
-Flask API: A Flask backend was created with two main API endpoints:
+# Data Preprocessing
 
-/get_options: Fetches unique values for substations and feeder names to populate the dropdown menus on the web page.
+Cleaned column names and removed extra spaces.
 
-/predict: Accepts user input and uses the loaded machine learning model to return a prediction.
+Handled missing numeric values by replacing NaN with 0.
 
-Web App: An index.html file serves as the front-end user interface. It allows users to select town, substation, feeder, and area type. It then sends this data to the Flask API to get and display a real-time prediction.
+Converted categorical columns (Town_Name, Substation, Feeder_Name, Rural_Urban) into numerical features using LabelEncoder.
 
-🛠️ Tools & Libraries
+Defined the target variable Outage_Category:
+
+0 → Short Outage (≤ 1 hour)
+
+1 → Long Outage (> 1 hour)
+
+# Model Development
+
+# Algorithm: Random Forest Classifier
+
+Features: Town_Name, Substation, Feeder_Name, Rural/Urban, No_of_Consumers
+
+Train/Test Split: 80/20
+
+Evaluated using accuracy and classification report.
+
+Model & encoders saved using Joblib (model.pkl & encoders.pkl).
+
+# FastAPI Deployment
+
+API Endpoint: POST /predict
+
+Input JSON Example:
+
+{
+  "Town_Name": "MAPUSA",
+  "Substation": "33KV Nagoa",
+  "Feeder_Name": "11KV Arpora",
+  "Rural_Urban": "RURAL",
+  "No_of_Consumers": 2209
+}
+
+
+Output Example:
+
+{
+  "prediction": "Short Outage (<= 1 hour)"
+}
+
+
+# Local Deployment: Runs on http://127.0.0.1:8000/
+
+Interactive Docs: http://127.0.0.1:8000/docs
+
+# Exploratory Data Analysis & Visualizations
+
+Bar Chart: Top towns by total number of outages.
+
+Scatter Plot: Correlation between outage duration and number of outages.
+
+Pie Chart: Distribution of consumers in Rural vs Urban areas.
+
+Line Chart: Total outages by town for May 2025.
+
+Bar Charts: Top 5 reasons for outages in May.
+
+Bar Chart: Top 10 substations by total outage duration.
+
+These visualizations provide insights into outage distribution and help in understanding the dataset before deployment.
+
+# 🛠️ Tools & Libraries
+
 Python 3.10+
 
-Flask – The web framework used for API development.
+FastAPI – API deployment
 
-pandas – For data manipulation and preprocessing.
+Uvicorn – ASGI server
 
-scikit-learn – For LabelEncoder and the machine learning model.
+Pandas & NumPy – Data manipulation
 
-joblib – To save and load the trained model.
+Scikit-learn – Model development
 
-HTML, CSS, JavaScript – For the front-end web interface.
+Matplotlib & Seaborn – Visualization
+
+Joblib – Saving models and encoders
 
 📂 Project Structure
-Task-3 End-to-End Data Science Project/
-│── Goa Power Outage Report May 2025.xlsx    # Raw data
-│── Goa Power Outage Report June 2025.xlsx   # Raw data
-│── power_outage_classifier.pkl                # Trained model
-│── app.py                                     # Flask backend
-│── index.html                                 # Front-end web page
-│── readme.md                                  # Project documentation
-│── requirements.txt                           # necessary libraries
+Task-3 Goa Power Outage Project/
+│── Goa Power Outage Report May 2025.xlsx
+│── train.ipynb
+│── main.py
+│── model.pkl
+│── encoders.pkl
+│── requirements.txt
+│── readme.md
+│── short demo end to end data science using fastAPI.mp4
+
+# ✅ Summary & Insights
+
+Data preprocessing and encoding ensure that the model handles new inputs via API.
+
+Random Forest performs robustly on small tabular datasets for outage prediction.
+
+FastAPI deployment allows real-time predictions with a simple POST request.
+
+Visualizations provide insights into power outage trends across towns and substations in May 2025.
+
+# A short demo video is included to showcase API functionality.
+
+⚠️ Notes
+
+Only May 2025 data is used; additional months can be added for future extensions.
+
+Ensure model.pkl and encoders.pkl are present to run the FastAPI app.
+
+Start the API using:
+
+uvicorn main:app --reload --port 8000
 
 
-✅ Deliverables
-A deployed web application that provides real-time predictions for power outages.
-
-Trained machine learning model saved as power_outage_classifier.pkl.
-
-Source code for the Flask API and the front-end interface.
-
-This concludes Task 3: End-to-End Data Science Project for the CodTech Internship 🚀
-
-👨‍💻 Developed by: Shaunak Damodar Sinai Kunde
-
-
+# 👨‍💻 Developed by: Shaunak Damodar Sinai Kunde
