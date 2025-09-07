@@ -1,5 +1,9 @@
-## 📘 `requirements.txt`
-Flask
 pandas
+numpy
 scikit-learn
 joblib
+matplotlib
+seaborn
+fastapi
+uvicorn[standard]
+notebook
