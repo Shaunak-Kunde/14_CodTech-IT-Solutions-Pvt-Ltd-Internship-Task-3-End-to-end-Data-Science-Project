@@ -1,5 +1,12 @@
 # CODTECH Internship – Task 3: Goa Power Outage Prediction ⚡
 
+# Company:- CodTech IT Solutions Pvt. Ltd., Hyderabad
+# Name:- Shaunak Damodar Sinai Kunde
+# Intern ID:- CT04DY1729
+# Domain:- Data Science
+# Duration:- 4 weeks
+# Mentor:- Muzammil Ahmed
+
 This project is part of my CODTECH Virtual Internship under Data Science. The goal is to build a full Data Science pipeline, from data collection and preprocessing to model training and deployment using FastAPI, to predict power outages in Goa. I have also included a short demo video showing the API in action.
 
 # Goa Power Outage Prediction
@@ -142,4 +149,5 @@ uvicorn main:app --reload --port 8000
 
 
 # 👨‍💻 Developed by: Shaunak Damodar Sinai Kunde
+
 
