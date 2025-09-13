@@ -70,8 +70,10 @@ Output Example:
 
 
 # Local Deployment: Runs on http://127.0.0.1:8000/
-
+<img width="857" height="391" alt="image" src="https://github.com/user-attachments/assets/a10e04b9-2aba-41e0-9637-0beef0cac593" />
 Interactive Docs: http://127.0.0.1:8000/docs
+<img width="865" height="385" alt="image" src="https://github.com/user-attachments/assets/82297900-61c2-4bf0-856c-5f6923768ab9" />
+
 
 # Exploratory Data Analysis & Visualizations
 
@@ -140,3 +142,4 @@ uvicorn main:app --reload --port 8000
 
 
 # 👨‍💻 Developed by: Shaunak Damodar Sinai Kunde
+
